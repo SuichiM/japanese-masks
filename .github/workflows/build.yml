@@ -34,15 +34,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
+          cache: "pnpm"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Build
-        run: npm run build
+        run: pnpm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4.0.0
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload dist folder
           path: "./dist"
