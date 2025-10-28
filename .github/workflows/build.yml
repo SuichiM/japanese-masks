@@ -34,15 +34,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "pnpm"
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
+          cache: "npm"
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       - name: Build
-        run: pnpm run build
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload GitHub Pages artifact
